@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballTicketApp.Pages.LoginPage"
+             Title="Авторизация">
+
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" IsVisible="{Binding UserLoginVisible}">
+            <Label Text="Добро пожаловать" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="0,15,0,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+            <Label Text="Заполните данные для авторизации" TextColor="Black" FontSize="18" Margin="0,15,0,5" HorizontalTextAlignment="Center"></Label>
+            <Entry x:Name="loginEntry" Placeholder="Логин" Margin="10,10,10,0"/>
+            <Entry x:Name="passwordEntry"  Placeholder = "Пароль" IsPassword ="True" Margin="10,0,10,0"/>
+            <Button x:Name="btnAuth" Text="Авторизоваться" FontSize="19" FontAttributes="Bold" Clicked="btnAuth_Clicked" HeightRequest="50" Margin="30,20,30,0"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

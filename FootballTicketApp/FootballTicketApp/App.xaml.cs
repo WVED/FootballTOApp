@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FootballTicketApp.Pages;
 
 namespace FootballTicketApp
 {
@@ -8,9 +9,9 @@ namespace FootballTicketApp
     {
         public App()
         {
-            InitializeComponent();
+            InitializeComponent();  
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

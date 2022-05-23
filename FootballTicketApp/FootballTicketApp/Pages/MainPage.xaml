@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballTicketApp.MainPage"
+             Title="Матчи">
+
+    <StackLayout>
+        <ListView x:Name="LViewMatches" ItemSelected="LViewMatches_ItemSelected" HasUnevenRows="True" HorizontalOptions="CenterAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="20">
+                            <Label Text="{Binding FirstTeam.Title}" FontSize="18" Margin="0,0,0,0" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="VS" FontAttributes="Bold" Margin="0,0,0,0" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                <Label Text="{Binding Date}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontSize="16" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <Label Text="{Binding SecondTeam.Title}" FontSize="18" Margin="0,0,0,0" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+                        </StackLayout>  
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

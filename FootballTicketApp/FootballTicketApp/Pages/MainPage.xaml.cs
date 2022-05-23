@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using FootballTicketApp.Pages;
 
 namespace FootballTicketApp
 {
@@ -22,7 +23,7 @@ namespace FootballTicketApp
 
         private void LViewMatches_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            Navigation.PushAsync(new MatchPage(LViewMatches.SelectedItem as Match));
         }
     }
 }

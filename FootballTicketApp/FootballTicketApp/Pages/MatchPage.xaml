@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballTicketApp.Pages.MatchPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image HeightRequest="180" Source="{Binding Team.Image}" HorizontalOptions="Start" x:Name="Team" Margin="20,0,0,0"></Image>
+            <Image HeightRequest="145" Source="{Binding Team1.Image}" x:Name="Team1" HorizontalOptions="End" Margin="0,0,20,0"></Image>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Выберите сектор:" FontSize="20" FontAttributes="Bold"></Label>
+                    <Picker x:Name="pickSector"></Picker>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Vertical">
+                    <Label Text="Выберите ряд:" FontSize="20" FontAttributes="Bold"></Label>
+                    <Picker x:Name="pickRow"></Picker>
+                </StackLayout>
+                <StackLayout Grid.Column="2" Orientation="Vertical">
+                    <Label Text="Выберите место:" FontSize="20" FontAttributes="Bold"></Label>
+                    <Picker x:Name="pickSite"></Picker>
+                </StackLayout>
+            </Grid>
+            <Button x:Name="btnPost" HeightRequest="60" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="btnPost_Clicked" Text="Оформить билет" FontSize="20" FontAttributes="Bold" Grid.Row="1"></Button>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
