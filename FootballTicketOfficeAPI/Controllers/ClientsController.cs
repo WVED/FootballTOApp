@@ -9,60 +9,47 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FootballTicketOfficeAPI.Data;
-using FootballTicketOfficeAPI.Models;
 
 namespace FootballTicketOfficeAPI.Controllers
 {
-    public class TeamsController : ApiController
+    public class ClientsController : ApiController
     {
         private FootballTicketOfficeEntities db = new FootballTicketOfficeEntities();
 
-        // GET: api/Teams
-        public IQueryable<Team> GetTeams()
+        // GET: api/Clients
+        public IQueryable<Client> GetClients()
         {
-            return db.Teams;
+            return db.Clients;
         }
 
-        [Route("api/getMatches")]
-        [ResponseType(typeof(Match))]
-        public IHttpActionResult GetMatch()
+        // GET: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult GetClient(int id)
         {
-            List<MatchResponse> Response = new List<MatchResponse>();
-            var matches = db.Matches.ToList();
-            foreach (Match match in matches)
-            {
-                Response.Add(match.toMatchResponse());
-            }
-            return Ok(Response);
-        }
-        // GET: api/Teams/5
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult GetTeam(int id)
-        {
-            Team team = db.Teams.Find(id);
-            if (team == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return Ok(team);
+            return Ok(client);
         }
 
-        // PUT: api/Teams/5
+        // PUT: api/Clients/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTeam(int id, Team team)
+        public IHttpActionResult PutClient(int id, Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != team.Id)
+            if (id != client.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(team).State = EntityState.Modified;
+            db.Entry(client).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +57,7 @@ namespace FootballTicketOfficeAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeamExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -83,35 +70,35 @@ namespace FootballTicketOfficeAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Teams
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult PostTeam(Team team)
+        // POST: api/Clients
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult PostClient(Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Teams.Add(team);
+            db.Clients.Add(client);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = team.Id }, team);
+            return CreatedAtRoute("DefaultApi", new { id = client.Id }, client);
         }
 
-        // DELETE: api/Teams/5
-        [ResponseType(typeof(Team))]
-        public IHttpActionResult DeleteTeam(int id)
+        // DELETE: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public IHttpActionResult DeleteClient(int id)
         {
-            Team team = db.Teams.Find(id);
-            if (team == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            db.Teams.Remove(team);
+            db.Clients.Remove(client);
             db.SaveChanges();
 
-            return Ok(team);
+            return Ok(client);
         }
 
         protected override void Dispose(bool disposing)
@@ -123,9 +110,9 @@ namespace FootballTicketOfficeAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TeamExists(int id)
+        private bool ClientExists(int id)
         {
-            return db.Teams.Count(e => e.Id == id) > 0;
+            return db.Clients.Count(e => e.Id == id) > 0;
         }
     }
 }

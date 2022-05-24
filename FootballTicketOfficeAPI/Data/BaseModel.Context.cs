@@ -26,12 +26,9 @@ namespace FootballTicketOfficeAPI.Data
         }
     
         public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<HistoryAuthorize> HistoryAuthorizes { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
-        public virtual DbSet<User> Users { get; set; }
     }
 }

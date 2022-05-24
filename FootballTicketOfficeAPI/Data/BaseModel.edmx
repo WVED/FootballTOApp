@@ -18,15 +18,6 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="HistoryAuthorize">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="DateTime" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Match">
           <Key>
             <PropertyRef Name="Id" />
@@ -35,13 +26,6 @@
           <Property Name="FirstTeamId" Type="int" Nullable="false" />
           <Property Name="SecondTeamId" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -73,33 +57,8 @@
           <Property Name="Site" Type="int" Nullable="false" />
           <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
           <Property Name="MatchId" Type="int" Nullable="false" />
-          <Property Name="CashierId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_HistoryAuthorize_User">
-          <End Role="User" Type="Self.User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="HistoryAuthorize" Type="Self.HistoryAuthorize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="HistoryAuthorize">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Match_Team_FirstTeam">
           <End Role="Team" Type="Self.Team" Multiplicity="1" />
           <End Role="Match" Type="Self.Match" Multiplicity="*" />
@@ -152,47 +111,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_User">
-          <End Role="User" Type="Self.User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="CashierId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище FootballTicketOfficeModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HistoryAuthorize" EntityType="Self.HistoryAuthorize" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_HistoryAuthorize_User" Association="Self.FK_HistoryAuthorize_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="HistoryAuthorize" EntitySet="HistoryAuthorize" />
-          </AssociationSet>
           <AssociationSet Name="FK_Match_Team_FirstTeam" Association="Self.FK_Match_Team_FirstTeam">
             <End Role="Team" EntitySet="Team" />
             <End Role="Match" EntitySet="Match" />
@@ -208,14 +132,6 @@
           <AssociationSet Name="FK_Ticket_Match" Association="Self.FK_Ticket_Match">
             <End Role="Match" EntitySet="Match" />
             <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_User" Association="Self.FK_Ticket_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -237,16 +153,6 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Client" FromRole="Client" ToRole="Ticket" />
         </EntityType>
-        <EntityType Name="HistoryAuthorize">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_HistoryAuthorize_User" FromRole="HistoryAuthorize" ToRole="User" />
-        </EntityType>
         <EntityType Name="Match">
           <Key>
             <PropertyRef Name="Id" />
@@ -258,14 +164,6 @@
           <NavigationProperty Name="Team" Relationship="Self.FK_Match_Team_FirstTeam" FromRole="Match" ToRole="Team" />
           <NavigationProperty Name="Team1" Relationship="Self.FK_Match_Team_SecondTeam" FromRole="Match" ToRole="Team" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Match" FromRole="Match" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -299,24 +197,9 @@
           <Property Name="Site" Type="Int32" Nullable="false" />
           <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MatchId" Type="Int32" Nullable="false" />
-          <Property Name="CashierId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Ticket_Client" FromRole="Ticket" ToRole="Client" />
           <NavigationProperty Name="Match" Relationship="Self.FK_Ticket_Match" FromRole="Ticket" ToRole="Match" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Ticket_User" FromRole="Ticket" ToRole="User" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HistoryAuthorizes" Relationship="Self.FK_HistoryAuthorize_User" FromRole="User" ToRole="HistoryAuthorize" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_User" FromRole="User" ToRole="Ticket" />
         </EntityType>
         <Association Name="FK_Ticket_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1">
@@ -329,20 +212,6 @@
             </Principal>
             <Dependent Role="Ticket">
               <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HistoryAuthorize_User">
-          <End Role="User" Type="Self.User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="HistoryAuthorize" Type="Self.HistoryAuthorize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="HistoryAuthorize">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -384,50 +253,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_User">
-          <End Role="User" Type="Self.User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="CashierId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="FootballTicketOfficeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="Self.Client" />
-          <EntitySet Name="HistoryAuthorizes" EntityType="Self.HistoryAuthorize" />
           <EntitySet Name="Matches" EntityType="Self.Match" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teams" EntityType="Self.Team" />
           <EntitySet Name="Tickets" EntityType="Self.Ticket" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Ticket_Client" Association="Self.FK_Ticket_Client">
             <End Role="Client" EntitySet="Clients" />
             <End Role="Ticket" EntitySet="Tickets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HistoryAuthorize_User" Association="Self.FK_HistoryAuthorize_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="HistoryAuthorize" EntitySet="HistoryAuthorizes" />
           </AssociationSet>
           <AssociationSet Name="FK_Match_Team_FirstTeam" Association="Self.FK_Match_Team_FirstTeam">
             <End Role="Team" EntitySet="Teams" />
@@ -439,14 +273,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Match" Association="Self.FK_Ticket_Match">
             <End Role="Match" EntitySet="Matches" />
-            <End Role="Ticket" EntitySet="Tickets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_User" Association="Self.FK_Ticket_User">
-            <End Role="User" EntitySet="Users" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
         </EntityContainer>
@@ -470,16 +296,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HistoryAuthorizes">
-            <EntityTypeMapping TypeName="FootballTicketOfficeModel.HistoryAuthorize">
-              <MappingFragment StoreEntitySet="HistoryAuthorize">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Matches">
             <EntityTypeMapping TypeName="FootballTicketOfficeModel.Match">
               <MappingFragment StoreEntitySet="Match">
@@ -487,14 +303,6 @@
                 <ScalarProperty Name="FirstTeamId" ColumnName="FirstTeamId" />
                 <ScalarProperty Name="SecondTeamId" ColumnName="SecondTeamId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="FootballTicketOfficeModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -529,19 +337,7 @@
                 <ScalarProperty Name="Site" ColumnName="Site" />
                 <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
                 <ScalarProperty Name="MatchId" ColumnName="MatchId" />
-                <ScalarProperty Name="CashierId" ColumnName="CashierId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="FootballTicketOfficeModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

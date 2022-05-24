@@ -9,6 +9,8 @@
 
 namespace FootballTicketOfficeAPI.Data
 {
+    using FootballTicketOfficeAPI.Models;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -25,9 +27,25 @@ namespace FootballTicketOfficeAPI.Data
         public int SecondTeamId { get; set; }
         public System.DateTime Date { get; set; }
     
+        [JsonIgnore]
         public virtual Team Team { get; set; }
+        [JsonIgnore]
         public virtual Team Team1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")] 
         public virtual ICollection<Ticket> Tickets { get; set; }
+
+        public MatchResponse toMatchResponse()
+        {
+            return new MatchResponse()
+            {
+                Id = Id,
+                FirstTeamId = FirstTeamId,
+                SecondTeamId = SecondTeamId,
+                Date = Date,
+                FirstTeam = Team,
+                SecondTeam = Team1
+            };
+        }
     }
 }

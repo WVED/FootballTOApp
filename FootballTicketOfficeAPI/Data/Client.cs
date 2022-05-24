@@ -9,6 +9,7 @@
 
 namespace FootballTicketOfficeAPI.Data
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -29,6 +30,7 @@ namespace FootballTicketOfficeAPI.Data
         public string Login { get; set; }
         public string Password { get; set; }
     
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
