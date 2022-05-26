@@ -33,7 +33,7 @@ namespace FootballTicketApp.Pages
                     if(client.Login == loginEntry.Text && client.Password == passwordEntry.Text)
                     {
                         Manager.loginedClient = client;
-                        Navigation.PushAsync(new MainPage());
+                        Navigation.PushAsync(new TabbedMainPage());
                     }
                     else if (loginEntry.Text == null || passwordEntry.Text == null)
                     {
@@ -42,6 +42,11 @@ namespace FootballTicketApp.Pages
                     }
                 }
             }
+        }
+
+        private void btnReg_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

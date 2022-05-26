@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:FootballTicketApp" xmlns:local1="clr-namespace:FootballTicketApp.Pages"
+            x:Class="FootballTicketApp.Pages.TabbedMainPage"
+            Title="FootballTicketOffice">
+  <!--Pages can be added as references or inline-->
+    <TabbedPage.Children>
+        <local:MainPage></local:MainPage>
+        <local1:TicketPage></local1:TicketPage>
+    </TabbedPage.Children>
+</TabbedPage>

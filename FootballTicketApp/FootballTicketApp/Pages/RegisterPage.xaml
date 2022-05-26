@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballTicketApp.Pages.RegisterPage">
+    <ScrollView>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" IsVisible="{Binding UserLoginVisible}">
+            <Label Text="Зарегистрироваться" TextColor="Black" FontSize="20" Margin="0,15,0,5" HorizontalTextAlignment="Center"></Label>
+            <Entry x:Name="nameEntry" Placeholder="Имя" Margin="10,10,10,0"/>
+            <Entry x:Name="surnameEntry" Placeholder="Фамилия" Margin="10,10,10,0"/>
+            <Entry x:Name="loginEntry" Placeholder="Логин" Margin="10,10,10,0"/>
+            <Entry x:Name="passwordEntry"  Placeholder = "Пароль" IsPassword ="True" Margin="10,0,10,0"/>
+            <Button x:Name="btnReg" Text="Зарегистрироваться" FontSize="18" FontAttributes="Bold" Clicked="btnReg_Clicked" HeightRequest="50" Margin="30,20,30,0"></Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

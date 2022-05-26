@@ -28,7 +28,7 @@ namespace FootballTicketApp.Pages
             tickets = JsonConvert.DeserializeObject<List<Ticket>>(response);
             int[] sectors = Enumerable.Range(1, 6).ToArray();
             int[] rows = Enumerable.Range(1, 8).ToArray();
-            int[] sites = Enumerable.Range(1, 10).ToArray();
+            int[] sites = Enumerable.Range(1, 10).ToArray(); 
             pickRow.ItemsSource = rows;
             pickSector.ItemsSource = sectors;
             pickSite.ItemsSource = sites;
@@ -54,6 +54,9 @@ namespace FootballTicketApp.Pages
                 currentTicket.PurchaseDate = DateTime.Now;
                 currentTicket.MatchId = match.Id;
                 currentTicket.Status = false;
+                Random random = new Random();
+                decimal price = random.Next(1000, 3000);
+                currentTicket.Price = price;
                 var client = new WebClient();
                 client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 var response = client.UploadString("http://10.0.2.2:64121/api/Tickets", JsonConvert.SerializeObject(currentTicket));

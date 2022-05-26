@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FootballTicketApp.Pages.MatchPage">
+             x:Class="FootballTicketApp.Pages.MatchPage"
+             Title="Игровой матч">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image HeightRequest="180" Source="{Binding Team.Image}" HorizontalOptions="Start" x:Name="Team" Margin="20,0,0,0"></Image>
-            <Image HeightRequest="145" Source="{Binding Team1.Image}" x:Name="Team1" HorizontalOptions="End" Margin="0,0,20,0"></Image>
+            <Image HeightRequest="163" Source="{Binding Team.Image}" HorizontalOptions="Start" x:Name="Team" Margin="20,0,0,0"></Image>
+            <Image HeightRequest="143" Source="{Binding Team1.Image}" x:Name="Team1" HorizontalOptions="End" Margin="0,0,20,0"></Image>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"></ColumnDefinition>
