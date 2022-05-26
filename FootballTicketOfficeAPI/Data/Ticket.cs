@@ -6,9 +6,10 @@
 //     Изменения, вносимые в этот файл вручную, будут перезаписаны при повторном создании кода.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Newtonsoft.Json;
+
 namespace FootballTicketOfficeAPI.Data
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -23,6 +24,7 @@ namespace FootballTicketOfficeAPI.Data
         public System.DateTime PurchaseDate { get; set; }
         public int MatchId { get; set; }
         public bool Status { get; set; }
+
         [JsonIgnore]
         public virtual Client Client { get; set; }
         [JsonIgnore]

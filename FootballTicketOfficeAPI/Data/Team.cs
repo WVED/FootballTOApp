@@ -25,7 +25,6 @@ namespace FootballTicketOfficeAPI.Data
         public int Id { get; set; }
         public string Title { get; set; }
         public byte[] Image { get; set; }
-    
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Match> Matches { get; set; }

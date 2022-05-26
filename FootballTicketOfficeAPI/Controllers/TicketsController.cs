@@ -22,7 +22,7 @@ namespace FootballTicketOfficeAPI.Controllers
             return db.Tickets;
         }
 
-        // GET: api/Tickets/5цц
+        // GET: api/Tickets/5
         [ResponseType(typeof(Ticket))]
         public IHttpActionResult GetTicket(int id)
         {
