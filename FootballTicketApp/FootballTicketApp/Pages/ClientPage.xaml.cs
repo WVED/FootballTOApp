@@ -21,6 +21,7 @@ namespace FootballTicketApp.Pages
             InitializeComponent();
             pickerBirthday.MaximumDate = DateTime.Now.AddYears(-14);
             pickerBirthday.MinimumDate = DateTime.Now.AddYears(-120);
+           // if (Manager.loginedClient.FirstName)
             entryLogin.Text = Manager.loginedClient.Login;
             pickerBirthday.Date = Manager.loginedClient.Birthday;
             entryName.Text = Manager.loginedClient.FirstName;
@@ -63,6 +64,7 @@ namespace FootballTicketApp.Pages
                 Manager.loginedClient.Password = editClient.Password;
                 Manager.loginedClient.Birthday = editClient.Birthday;
                 Manager.loginedClient.Email = editClient.Email;
+                Navigation.PushAsync(new MainPage());
             }
             else
             {

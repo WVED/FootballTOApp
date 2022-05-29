@@ -63,7 +63,7 @@ namespace FootballTicketApp.Pages
                 client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 var response = client.UploadString("http://10.0.2.2:64121/api/Tickets", JsonConvert.SerializeObject(currentTicket));
                 DisplayAlert("Успешно!", "Билет успешно оформлен!", "OK");
-                Navigation.PushAsync(new TicketPage());
+                Navigation.PushAsync(new TabbedMainPage());
             }
         }
     }
