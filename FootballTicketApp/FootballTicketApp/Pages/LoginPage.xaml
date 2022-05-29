@@ -7,13 +7,13 @@
 
     <ScrollView>
         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" IsVisible="{Binding UserLoginVisible}">
+            <Image Source="Resources/drawable/footballer.png" HeightRequest="120" Margin="0,20,0,10" HorizontalOptions="Center" VerticalOptions="Center"></Image>
             <Label Text="Добро пожаловать!" TextColor="Black" FontSize="23" FontAttributes="Bold" Margin="0,15,0,0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="Constantia"></Label>
             <Label Text="Заполните данные для авторизации" TextColor="Black" FontSize="19" Margin="0,15,0,5" HorizontalTextAlignment="Center"></Label>
             <Entry x:Name="loginEntry" Placeholder="Логин" Margin="10,10,10,0"/>
             <Entry x:Name="passwordEntry"  Placeholder = "Пароль" IsPassword ="True" Margin="10,0,10,0"/>
             <Button x:Name="btnAuth" Text="Авторизоваться" FontSize="20" FontAttributes="Bold" Clicked="btnAuth_Clicked" HeightRequest="50" Margin="30,20,30,0"></Button>
             <Button Background="Transparent" BorderColor="Green" x:Name="btnReg" Clicked="btnReg_Clicked" Margin="10,30,0,0" Text="Еще не зарегистрированы?" FontSize="20" FontAttributes="Bold"></Button>
-            <Image Source="footballer.png" HeightRequest="5" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

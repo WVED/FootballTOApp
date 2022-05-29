@@ -10,6 +10,7 @@ namespace FootballTicketApp
         public int FirstTeamId { get; set; }
         public int SecondTeamId { get; set; }
         public System.DateTime Date { get; set; }
+        public int TicketCost { get; set; }
         public Team FirstTeam { get; set; }
         public Team SecondTeam { get; set; }
     }

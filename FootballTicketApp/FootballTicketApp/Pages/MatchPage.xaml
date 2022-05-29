@@ -6,31 +6,42 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image HeightRequest="163" Source="{Binding Team.Image}" HorizontalOptions="Start" x:Name="Team" Margin="20,0,0,0"></Image>
-            <Image HeightRequest="143" Source="{Binding Team1.Image}" x:Name="Team1" HorizontalOptions="End" Margin="0,0,20,0"></Image>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                        <Image x:Name="Team" HeightRequest="140" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        <Label x:Name="labelTeam" WidthRequest="100" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Label Text="VS" FontAttributes="Bold" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="33" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label x:Name="labelDate" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                        <Label x:Name="labelTime" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                        <Label x:Name="labelCost" HorizontalOptions="FillAndExpand" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="End">
+                        <Image x:Name="Team1" HeightRequest="140" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        <Label x:Name="labelTeam1" FontAttributes="Bold" FontSize="20" WidthRequest="100" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+                    </StackLayout>
+                </StackLayout>
+                </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="1" VerticalOptions="FillAndExpand" Margin="10,30,10,0">
                 <StackLayout Orientation="Vertical">
                     <Label Text="Выберите сектор:" FontSize="20" FontAttributes="Bold"></Label>
-                    <Picker x:Name="pickSector"></Picker>
+                    <Picker x:Name="pickSector" Title="Сектор"></Picker>
                 </StackLayout>
-                <StackLayout Grid.Column="1" Orientation="Vertical">
+                <StackLayout Orientation="Vertical">
                     <Label Text="Выберите ряд:" FontSize="20" FontAttributes="Bold"></Label>
-                    <Picker x:Name="pickRow"></Picker>
+                    <Picker x:Name="pickRow" Title="Ряд"></Picker>
                 </StackLayout>
-                <StackLayout Grid.Column="2" Orientation="Vertical">
+                <StackLayout Orientation="Vertical">
                     <Label Text="Выберите место:" FontSize="20" FontAttributes="Bold"></Label>
-                    <Picker x:Name="pickSite"></Picker>
+                    <Picker x:Name="pickSite" Title="Место"></Picker>
                 </StackLayout>
-            </Grid>
-            <Button x:Name="btnPost" HeightRequest="60" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="btnPost_Clicked" Text="Оформить билет" FontSize="20" FontAttributes="Bold" Grid.Row="1"></Button>
+            </StackLayout>
+            <Button x:Name="btnPost" HeightRequest="60" HorizontalOptions="CenterAndExpand" Margin="10" VerticalOptions="EndAndExpand" Clicked="btnPost_Clicked" Text="Оформить билет" FontSize="20" FontAttributes="Bold" Grid.Row="1"></Button>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

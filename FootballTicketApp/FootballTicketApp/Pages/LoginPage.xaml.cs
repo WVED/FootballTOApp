@@ -16,18 +16,18 @@ namespace FootballTicketApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        List<Client> clients = new List<Client>();
         public LoginPage()
         {
             InitializeComponent();
+
         }
 
         private void btnAuth_Clicked(object sender, EventArgs e)
         {
             if (loginEntry.Text != null && passwordEntry.Text != null)
             {
-                var webClient = new WebClient();
-                var response = webClient.DownloadString("http://10.0.2.2:64121/api/Clients");
-                var clients = JsonConvert.DeserializeObject<List<Client>>(response);
+                
                 foreach(Client client in clients)
                 {
                     if(client.Login == loginEntry.Text && client.Password == passwordEntry.Text)
@@ -42,6 +42,12 @@ namespace FootballTicketApp.Pages
                     }
                 }
             }
+        }
+        protected override void OnAppearing()
+        {
+            var client = new WebClient();
+            var response = client.DownloadString("http://10.0.2.2:64121/api/Clients");
+            clients = JsonConvert.DeserializeObject<List<Client>>(response);
         }
 
         private void btnReg_Clicked(object sender, EventArgs e)

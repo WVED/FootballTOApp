@@ -7,20 +7,22 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <FlexLayout Direction="Row" Padding="20" Wrap="Wrap">
-                        <Label Text="{Binding FirstTeam.Title}" FontSize="20" Margin="0,0,0,0" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
-                        <StackLayout Orientation="Vertical">
-                            <FlexLayout Direction="Column" Wrap="Wrap">
-                                <Label Text="VS" FontAttributes="Bold" Margin="0,0,0,0" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-                                <StackLayout Orientation="Vertical">
-                                    <FlexLayout HorizontalOptions="CenterAndExpand" Direction="Row" Wrap="Wrap">
-                                        <Label x:Name="labelDate" Text="{Binding Date}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
-                                    </FlexLayout>
+                    <Frame BorderColor="Black">
+                        <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                    <Image Source="{Binding FirstTeam.Photo}" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                    <Label Text="{Binding FirstTeam.Title}" WidthRequest="100" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
                                 </StackLayout>
-                            </FlexLayout>
+                                <Label Text="VS" FontAttributes="Bold" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                    <Image Source="{Binding SecondTeam.Photo}" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                    <Label Text="{Binding SecondTeam.Title}" FontSize="20" WidthRequest="100" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <Label x:Name="labelDate" Text="{Binding Date, StringFormat='{0:dd MMMM yyyy, HH:mm}'}" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
-                        <Label Text="{Binding SecondTeam.Title}" FontSize="20" Margin="0,0,0,0" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
-                    </FlexLayout>
+                    </Frame>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

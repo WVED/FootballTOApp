@@ -3,11 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FootballTicketApp.Pages.TicketPage"
              Title="Мои билеты">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ListView x:Name="LViewTickets" HasUnevenRows="True" HorizontalOptions="CenterAndExpand">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame BorderColor="Black">
+                        <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                    <Image Source="{Binding match.FirstTeam.Photo}" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                    <Label Text="{Binding match.FirstTeam.Title}" FontAttributes="Bold" WidthRequest="100" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                                <Label Text="VS" FontAttributes="Bold" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                    <Image Source="{Binding match.SecondTeam.Photo}" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                    <Label Text="{Binding match.SecondTeam.Title}" FontAttributes="Bold" FontSize="20" WidthRequest="100" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <Label Text="{Binding match.Date, StringFormat='{0:dd MMMM yyyy, HH:mm}'}" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                            <Frame BorderColor="Gray" Margin="0,10,0,0">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label HorizontalOptions="FillAndExpand" Text="{Binding Sector, StringFormat='Сектор: {0}'}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                        <Label HorizontalOptions="FillAndExpand" Text="{Binding Row, StringFormat='Ряд: {0}'}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                        <Label HorizontalOptions="FillAndExpand" Text="{Binding Site, StringFormat='Место: {0}'}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                    </StackLayout>
+                                    <Label Text="{Binding PurchaseDate, StringFormat='Дата покупки: {0:dd MMMM yyyy, HH:mm}'}" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                    <Label HorizontalOptions="FillAndExpand" FontAttributes="Bold" Text="{Binding match.TicketCost, StringFormat='Цена: {0} руб.'}" Margin="0,10,0,0" HorizontalTextAlignment="Center" FontSize="18" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                            </Frame>
+                            <Button x:Name="btnCancelTicket" FontSize="15" FontAttributes="Bold" Text="Отменить" Clicked="btnCancelTicket_Clicked"></Button>
+                        </StackLayout>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

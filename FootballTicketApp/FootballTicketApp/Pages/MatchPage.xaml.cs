@@ -21,8 +21,13 @@ namespace FootballTicketApp.Pages
         {
             InitializeComponent();
             match = currentMatch;
+            labelTeam.Text = currentMatch.FirstTeam.Title;
+            labelTeam1.Text = currentMatch.SecondTeam.Title;
             Team.Source = currentMatch.FirstTeam.Photo;
             Team1.Source = currentMatch.SecondTeam.Photo;
+            labelDate.Text = String.Format("{0:dd MMMM yyyy}", currentMatch.Date); 
+            labelTime.Text = String.Format("{0:HH:mm}", currentMatch.Date);
+            labelCost.Text = currentMatch.TicketCost + " руб.";
             var client = new WebClient();
             var response = client.DownloadString("http://10.0.2.2:64121/api/Tickets");
             tickets = JsonConvert.DeserializeObject<List<Ticket>>(response);
@@ -54,13 +59,11 @@ namespace FootballTicketApp.Pages
                 currentTicket.PurchaseDate = DateTime.Now;
                 currentTicket.MatchId = match.Id;
                 currentTicket.Status = false;
-                Random random = new Random();
-                decimal price = random.Next(1000, 3000);
-                currentTicket.Price = price;
                 var client = new WebClient();
                 client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 var response = client.UploadString("http://10.0.2.2:64121/api/Tickets", JsonConvert.SerializeObject(currentTicket));
                 DisplayAlert("Успешно!", "Билет успешно оформлен!", "OK");
+                Navigation.PushAsync(new TicketPage());
             }
         }
     }

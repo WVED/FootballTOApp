@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,7 +36,7 @@ namespace FootballTicketApp.Pages
                 webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 var response = webClient.UploadString("http://10.0.2.2:64121/api/Clients", JsonConvert.SerializeObject(currentClient));
                 DisplayAlert("Успешно!", "Вы успешно зарегистрировались!", "OK");
-                Navigation.PushAsync(new LoginPage());
+                Navigation.PushAsync(new TabbedMainPage());
             }
         }
     }
