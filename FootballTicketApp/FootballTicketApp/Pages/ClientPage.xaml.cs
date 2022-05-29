@@ -63,7 +63,7 @@ namespace FootballTicketApp.Pages
                 Manager.loginedClient.Password = editClient.Password;
                 Manager.loginedClient.Birthday = editClient.Birthday;
                 Manager.loginedClient.Email = editClient.Email;
-                Navigation.PushAsync(new MainPage());
+                Navigation.PushAsync(new TabbedMainPage());
             }
             else
             {
