@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FootballTicketOfficeAPI.Data;
+using FootballTicketOfficeAPI.Models;
 
 namespace FootballTicketOfficeAPI.Controllers
 {
@@ -35,6 +36,20 @@ namespace FootballTicketOfficeAPI.Controllers
             return Ok(client);
         }
 
+        [Route("api/editClient")]
+        [ResponseType(typeof(Match))]
+        public IHttpActionResult EditClient(EditClientRequest request)
+        {
+            var client = db.Clients.Where(p => p.Id == request.Id).First();
+            client.FirstName = request.FirstName;
+            client.LastName = request.LastName;
+            client.Login = request.Login;
+            client.Password = request.Password;
+            client.Birthday = request.Birthday;
+            client.Email = request.Email;
+            db.SaveChanges();
+            return Ok(client);
+        }
         // PUT: api/Clients/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)

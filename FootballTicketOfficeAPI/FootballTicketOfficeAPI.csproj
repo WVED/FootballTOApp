@@ -200,6 +200,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientTicketResponse.cs" />
+    <Compile Include="Models\EditClientRequest.cs" />
     <Compile Include="Models\MatchResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

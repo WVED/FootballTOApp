@@ -28,7 +28,7 @@ namespace FootballTicketOfficeAPI.Controllers
         public IHttpActionResult GetMatch()
         {
             List<MatchResponse> Response = new List<MatchResponse>();
-            var matches = db.Matches.ToList();
+            var matches = db.Matches.ToList().Where(p => p.Date >= DateTime.Now).OrderBy(p => p.Date);
             foreach (Match match in matches)
             {
                 Response.Add(match.toMatchResponse());

@@ -9,6 +9,7 @@
 
 namespace FootballTicketOfficeAPI.Data
 {
+    using FootballTicketOfficeAPI.Models;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -16,7 +17,6 @@ namespace FootballTicketOfficeAPI.Data
     public partial class Ticket
     {
         public int Id { get; set; }
-        public decimal Price { get; set; }
         public int ClientId { get; set; }
         public int Sector { get; set; }
         public int Row { get; set; }
@@ -24,10 +24,25 @@ namespace FootballTicketOfficeAPI.Data
         public System.DateTime PurchaseDate { get; set; }
         public int MatchId { get; set; }
         public bool Status { get; set; }
-
         [JsonIgnore]
         public virtual Client Client { get; set; }
         [JsonIgnore]
         public virtual Match Match { get; set; }
+        public ClientTicketResponse toClientTicketResponse()
+        {
+            return new ClientTicketResponse()
+            {
+                Id = Id,
+                ClientId = ClientId,
+                Sector = Sector,
+                Row = Row,
+                Site = Site,
+                PurchaseDate = PurchaseDate,
+                MatchId = MatchId,
+                Status = Status,
+                match = Match.toMatchResponse()
+            };
+        }
+
     }
 }

@@ -14,7 +14,6 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="date" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -26,6 +25,7 @@
           <Property Name="FirstTeamId" Type="int" Nullable="false" />
           <Property Name="SecondTeamId" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="TicketCost" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -50,7 +50,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="Sector" Type="int" Nullable="false" />
           <Property Name="Row" Type="int" Nullable="false" />
@@ -148,7 +147,6 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Client" FromRole="Client" ToRole="Ticket" />
@@ -161,6 +159,7 @@
           <Property Name="FirstTeamId" Type="Int32" Nullable="false" />
           <Property Name="SecondTeamId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TicketCost" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Team" Relationship="Self.FK_Match_Team_FirstTeam" FromRole="Match" ToRole="Team" />
           <NavigationProperty Name="Team1" Relationship="Self.FK_Match_Team_SecondTeam" FromRole="Match" ToRole="Team" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Match" FromRole="Match" ToRole="Ticket" />
@@ -190,7 +189,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="Sector" Type="Int32" Nullable="false" />
           <Property Name="Row" Type="Int32" Nullable="false" />
@@ -290,7 +288,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
@@ -303,6 +300,7 @@
                 <ScalarProperty Name="FirstTeamId" ColumnName="FirstTeamId" />
                 <ScalarProperty Name="SecondTeamId" ColumnName="SecondTeamId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TicketCost" ColumnName="TicketCost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -330,7 +328,6 @@
             <EntityTypeMapping TypeName="FootballTicketOfficeModel.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="Sector" ColumnName="Sector" />
                 <ScalarProperty Name="Row" ColumnName="Row" />

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FootballTicketOfficeAPI.Data;
+using FootballTicketOfficeAPI.Models;
 
 namespace FootballTicketOfficeAPI.Controllers
 {
@@ -22,6 +23,17 @@ namespace FootballTicketOfficeAPI.Controllers
             return db.Tickets;
         }
 
+        [Route("api/getTickets/{id}")]
+        public List<ClientTicketResponse> GetTicketsClient(int id)
+        {
+            List<ClientTicketResponse> clientTickets = new List<ClientTicketResponse>();
+            List<Ticket> tickets = db.Tickets.Where(p => p.ClientId == id && p.Match.Date >= DateTime.Now).OrderBy(p => p.Match.Date).ToList();
+            foreach(Ticket ticket in tickets)
+            {
+                clientTickets.Add(ticket.toClientTicketResponse());
+            }
+            return clientTickets;
+        }
         // GET: api/Tickets/5
         [ResponseType(typeof(Ticket))]
         public IHttpActionResult GetTicket(int id)

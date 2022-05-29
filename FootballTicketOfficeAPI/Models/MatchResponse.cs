@@ -14,5 +14,6 @@ namespace FootballTicketOfficeAPI.Models
         public System.DateTime Date { get; set; }
         public Team FirstTeam { get; set; }
         public Team SecondTeam { get; set; }
+        public int TicketCost { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace FootballTicketOfficeAPI.Data
         public string LastName { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public string Email { get; set; }
-        public string Phone { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         [JsonIgnore]
