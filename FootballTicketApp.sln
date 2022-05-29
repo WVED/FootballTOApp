@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketApp.Android", "FootballTicketApp\FootballTicketApp.Android\FootballTicketApp.Android.csproj", "{75A0D7D5-080F-4853-A258-DEAFF1C42823}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketApp", "FootballTicketApp\FootballTicketApp\FootballTicketApp.csproj", "{E8767BC2-86A7-49F6-B009-B98E3750E773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballTicketApp", "FootballTicketApp\FootballTicketApp\FootballTicketApp.csproj", "{E8767BC2-86A7-49F6-B009-B98E3750E773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTicketTest", "FootballTicketTest\FootballTicketTest.csproj", "{6E0470A6-0B1F-4D7C-82AC-4682288357BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{E8767BC2-86A7-49F6-B009-B98E3750E773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8767BC2-86A7-49F6-B009-B98E3750E773}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8767BC2-86A7-49F6-B009-B98E3750E773}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6E0470A6-0B1F-4D7C-82AC-4682288357BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0470A6-0B1F-4D7C-82AC-4682288357BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0470A6-0B1F-4D7C-82AC-4682288357BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0470A6-0B1F-4D7C-82AC-4682288357BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,7 +27,7 @@ namespace FootballTicketApp.Pages
         {
             if (loginEntry.Text != null && passwordEntry.Text != null)
             {
-                
+                int count = 0;
                 foreach(Client client in clients)
                 {
                     if(client.Login == loginEntry.Text && client.Password == passwordEntry.Text)
@@ -37,9 +37,18 @@ namespace FootballTicketApp.Pages
                     }
                     else if (loginEntry.Text == null || passwordEntry.Text == null)
                     {
-                        DisplayAlert("Ошибка!", "Введены неверные данные!", "OK");
+                        DisplayAlert("Ошибка!", "Введите логин и пароль", "OK");
                         return;
                     }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                if(count == clients.Count())
+                {
+                    DisplayAlert("Ошибка!", "Введены неверные данные!", "OK");
+                    return;
                 }
             }
         }

@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:FootballTicketApp" xmlns:local1="clr-namespace:FootballTicketApp.Pages"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:FootballTicketApp" xmlns:local1="clr-namespace:FootballTicketApp.Pages"
             x:Class="FootballTicketApp.Pages.TabbedMainPage"
-            Title="FootballTicketOffice"
             NavigationPage.HasBackButton="False">
   <!--Pages can be added as references or inline-->
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="FootballTicketOffice" FontSize="21" FontAttributes="Bold" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+            <ImageButton Clicked="btnProfile_Clicked" x:Name="btnProfile" Source="Resources/drawable/user.png" HorizontalOptions="EndAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,20,0" WidthRequest="40"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <TabbedPage.Children>
         <local:MainPage></local:MainPage>
         <local1:TicketPage></local1:TicketPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballTicketApp.Pages.ClientPage"
+             Title="Редактирование профиля">
+    <StackLayout Orientation="Vertical" Margin="10">
+        <Label Text="Ваше имя:" FontSize="18" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Имя" x:Name="entryName"></Entry>
+        <Label Text="Ваша фамилия:" FontSize="18" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Фамилия" x:Name="entrySurname"></Entry>
+        <Label Text="Ваша дата рождения:" FontSize="18" FontAttributes="Bold"></Label>
+        <DatePicker x:Name="pickerBirthday"></DatePicker>
+        <Label Text="Ваш почтовый ящик:" FontSize="18" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Почтовый ящик" x:Name="entryEmail"></Entry>
+        <Label Text="Ваш логин:" FontSize="18" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Имя" x:Name="entryLogin"></Entry>
+        <Label Text="Ваш пароль:" FontSize="18" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Имя" x:Name="entryPassword"></Entry>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <Button Text="Сохранить" FontSize="18" FontAttributes="Bold" HeightRequest="60" x:Name="btnSave" Clicked="btnSave_Clicked"></Button>
+            <Button Text="Выйти" FontSize="18" FontAttributes="Bold" HeightRequest="60" x:Name="btnExit" Clicked="btnExit_Clicked"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

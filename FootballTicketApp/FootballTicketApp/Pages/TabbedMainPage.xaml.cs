@@ -16,5 +16,10 @@ namespace FootballTicketApp.Pages
         {
             InitializeComponent();
         }
+
+        private void btnProfile_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ClientPage());
+        }
     }
 }
