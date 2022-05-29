@@ -35,8 +35,9 @@ namespace FootballTicketApp.Pages
                 var webClient = new WebClient();
                 webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
                 var response = webClient.UploadString("http://10.0.2.2:64121/api/Clients", JsonConvert.SerializeObject(currentClient));
+                Manager.loginedClient = JsonConvert.DeserializeObject<Client>(response);
                 DisplayAlert("Успешно!", "Вы успешно зарегистрировались!", "OK");
-                Navigation.PushAsync(new LoginPage());
+                Navigation.PushAsync(new TabbedMainPage());
             }
         }
     }
